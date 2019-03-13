@@ -8,8 +8,8 @@
   "license": "MIT",
   "homepage": "https://github.com/oraykt/Live_Balls-NodeJs",
   "dependencies": {
-    "angular": "^1.7.8",
     "semantic": "^2.4.1",
-    "jquery": "^3.3.1"
+    "jquery": "^3.3.1",
+    "angular": "1.6.9"
   }
 }

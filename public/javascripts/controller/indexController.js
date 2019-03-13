@@ -1,15 +1,17 @@
 app.controller('indexController', ['$scope', 'indexFactory', ($scope, indexFactory) => {
 
-    $scope.init = () => {
-        const userName = prompt('Please enter username');
+    $scope.messages = [];
 
-        if (userName)
-            initSocket(userName);
+    $scope.init = () => {
+        const username = prompt('Please enter username');
+
+        if (username)
+            initSocket(username);
         else
             return false;
     };
 
-    function initSocket(userName) {
+    function initSocket(username) {
         const connectionOptions = {
             reconnectionAttempts: 3,
             reconnectionDelay: 500
@@ -17,8 +19,16 @@ app.controller('indexController', ['$scope', 'indexFactory', ($scope, indexFacto
 
         indexFactory.connectSocket('http://localhost:3000', connectionOptions)
             .then((socket) => {
-                socket.emit('newUser', {
-                    userName
+                socket.emit('newUser', { username });
+
+                socket.on('newUser', (data) => {
+                    const messageData = {
+                        type: 0,
+                        username: data.username
+                    };
+                    $scope.messages.push(messageData);
+                    $scope.$apply();
+                    console.log($scope);
                 });
             }).catch((err) => {
                 console.log(err);
