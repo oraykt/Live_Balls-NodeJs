@@ -73,6 +73,18 @@ app.controller('indexController', ['$scope', 'indexFactory', ($scope, indexFacto
                     });
                 });
 
+                $scope.newMessage = () => {
+                    const messageData = {
+                        type: {
+                            code: 1,    // server or user message
+                        },
+                        username: username,
+                        text: $scope.message
+                    };
+                    $scope.messages.push(messageData);
+                    $scope.message = "";
+                }
+
             }).catch((err) => {
                 console.log(err);
             });

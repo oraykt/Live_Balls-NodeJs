@@ -14,8 +14,6 @@ block content
               .relative
                 span.name {{player.username}}
                 .message
-
-
           .ui.items.chat
             .item(ng-repeat="message in messages")
               .content(ng-if="!message.type.code")
@@ -25,6 +23,12 @@ block content
                   | ayrildi.
                 .description.message(ng-if="message.type.message")
                   | katildi.
-          .ui.action.input.fluid
-            input(type='text', placeholder='Type here...')
-            button.ui.button Send
+
+              .content(ng-if="message.type.code")
+                span
+                a.header.name &nbsp; {{message.username}} &nbsp;
+                .description.message
+                  | {{ message.text }}
+          form.ui.action.input.fluid(ng-submit="newMessage()")
+            input(ng-model="message", placeholder='Type here...')
+            button.ui.button(type="submit") Send
