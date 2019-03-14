@@ -1,13 +1,11 @@
 const socketio = require('socket.io');
 const io = socketio();
 
-const socketApi = {
-
-};
+const socketApi = {};
 
 socketApi.io = io;
 
-const users = [];
+const users = {};
 
 io.on('connection', (socket) => {
     console.log('User connected!');
@@ -20,9 +18,15 @@ io.on('connection', (socket) => {
                 y: 0
             }
         };
-        const userData = Object.assign(data, defaultData);
-        users.push(userData);
-        socket.broadcast.emit('newUser', userData);
+        users[socket.id] = Object.assign(data, defaultData);
+        socket.broadcast.emit('newUser', users[socket.id]);
+        socket.emit('initPlayer', users);
+    });
+
+    socket.on('disconnect', () => {
+        socket.broadcast.emit('disUser', users[socket.id]);
+        delete users[socket.id];
+        console.log(users);
     });
 });
 
