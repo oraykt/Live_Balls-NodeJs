@@ -48,6 +48,7 @@ app.controller('indexController', ['$scope', 'indexFactory', ($scope, indexFacto
                         username: user.username
                     };
                     $scope.messages.push(messageData);
+                    delete $scope.players[user.id];
                     $scope.$apply();
                 });
 

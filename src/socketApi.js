@@ -1,6 +1,6 @@
 const socketio = require('socket.io');
 const io = socketio();
-
+const randomColor = require('../helpers/randomColor');
 const socketApi = {};
 
 socketApi.io = io;
@@ -16,9 +16,12 @@ io.on('connection', (socket) => {
             position: {
                 x: 0,
                 y: 0
-            }
+            },
+            color: randomColor()
         };
-        users[socket.id] = Object.assign(data, defaultData);
+
+        const userData = Object.assign(data, defaultData);
+        users[socket.id] = userData;
         socket.broadcast.emit('newUser', users[socket.id]);
         socket.emit('initPlayer', users);
     });
