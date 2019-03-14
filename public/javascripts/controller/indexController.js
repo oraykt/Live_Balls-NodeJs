@@ -50,6 +50,19 @@ app.controller('indexController', ['$scope', 'indexFactory', ($scope, indexFacto
                     $scope.messages.push(messageData);
                     $scope.$apply();
                 });
+
+                let animate = false;
+                $scope.onClickPlayer = ($event) => {
+                    // $event.offsetX , $event.offsetY
+                    if (!animate) {
+                        animate = true;
+                        $('#' + socket.id).animate({ 'left': $event.offsetX, 'top': $event.offsetY }, () => {
+                            animate = false;
+                        });
+                    }
+                };
+
+
             }).catch((err) => {
                 console.log(err);
             });
