@@ -1,7 +1,9 @@
 const colors = [
     'blue',
     'green',
-    'red'
+    'red',
+    'tomato',
+    'orange'
 ];
 
 

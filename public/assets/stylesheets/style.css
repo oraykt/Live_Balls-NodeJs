@@ -1,13 +1,13 @@
-body{
-    background-color: #f0f1f6!important;
+body {
+    background-color: #f0f1f6 !important;
 }
 
-.margin-30{
-    margin: 30px 0!important;
+.margin-30 {
+    margin: 30px 0 !important;
 }
 
-.gameArea{
-    min-height:450px;
+.gameArea {
+    min-height: 450px;
     position: relative;
 }
 
@@ -15,7 +15,8 @@ body{
     width: 80px;
     height: 80px;
     line-height: 80px;
-    border-radius: 50%; /* the magic */
+    border-radius: 50%;
+    /* the magic */
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
     text-align: center;
@@ -30,21 +31,36 @@ body{
 .blue {
     background-color: #3498db;
 }
+
 .green {
     background-color: #16a085;
 }
+
 .red {
     background-color: #e74c3c;
 }
 
-.circle .relative{
+.purple {
+    background-color: #800080;
+}
+
+.orange {
+    background-color: #FFA500;
+}
+
+.tomato {
+    background-color: #FF6347;
+}
+
+.circle .relative {
     position: relative;
 }
 
-.circle .relative > .name {
+.circle .relative>.name {
     text-transform: uppercase;
 }
-.circle .relative > .message{
+
+.circle .relative>.message {
     font-size: 11px;
     position: absolute;
     top: -22px;
@@ -57,22 +73,26 @@ body{
     display: inline-block;
 }
 
-.chat{
-    margin-right: 10px!important;
-    margin-left: 10px!important;
+.chat {
+    margin-right: 10px !important;
+    margin-left: 10px !important;
     height: 90px;
-    -webkit-mask-image: -webkit-gradient(linear, left 60%, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)))
+    overflow-y: auto;
 
 }
-.chat .content{
+
+.chat .content {
     text-align: left;
 }
-.chat .name{
-    font-size: 15px!important;
+
+.chat .name {
+    font-size: 15px !important;
 }
-.chat .message{
+
+.chat .message {
     display: inline;
 }
-.chat .item{
-    margin:.3em 0!important;
+
+.chat .item {
+    margin: .3em 0 !important;
 }
