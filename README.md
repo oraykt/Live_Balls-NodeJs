@@ -1,5 +1,9 @@
 # Live_Balls-NodeJs
-SocketIO Live Balls
+SocketIO Live Balls <br/>
+<br/>
 
+> npm install
 
-https://kt-socketio-live-balls.herokuapp.com/
+> npm install -g nodemon
+
+> npm run start:dev
