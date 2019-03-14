@@ -1,4 +1,4 @@
-app.controller('indexController', ['$scope', 'indexFactory', ($scope, indexFactory, configFactoy) => {
+app.controller('indexController', ['$scope', 'indexFactory', 'configFactory', ($scope, indexFactory, configFactory) => {
     try {
         $scope.messages = [];
         $scope.players = {};
@@ -31,8 +31,8 @@ app.controller('indexController', ['$scope', 'indexFactory', ($scope, indexFacto
                 reconnectionAttempts: 3,
                 reconnectionDelay: 500
             };
-            const sockerUrl = await configFactory.getConfig();
-            const socket = await indexFactory.connectSocket(sockerUrl.data.socketUrl, connectionOptions);
+            const socketUrl = await configFactory.getConfig();
+            const socket = await indexFactory.connectSocket(socketUrl.data.socketUrl, connectionOptions);
             socket.emit('newUser', { username });
 
             socket.on('initPlayer', (player) => {
