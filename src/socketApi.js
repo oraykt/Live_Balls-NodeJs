@@ -26,7 +26,12 @@ io.on('connection', (socket) => {
     socket.on('disconnect', () => {
         socket.broadcast.emit('disUser', users[socket.id]);
         delete users[socket.id];
-        console.log(users);
+    });
+
+    socket.on('animateLive', (data) => {
+        users[socket.id].position.x = data.x;
+        users[socket.id].position.y = data.y;
+        socket.broadcast.emit('animated', { socketId: socket.id, x: data.x, y: data.y });
     });
 });
 
