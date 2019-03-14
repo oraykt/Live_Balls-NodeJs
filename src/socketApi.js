@@ -32,9 +32,14 @@ io.on('connection', (socket) => {
     });
 
     socket.on('animateLive', (data) => {
-        users[socket.id].position.x = data.x;
-        users[socket.id].position.y = data.y;
-        socket.broadcast.emit('animated', { socketId: socket.id, x: data.x, y: data.y });
+        try {
+            users[socket.id].position.x = data.x;
+            users[socket.id].position.y = data.y;
+            socket.broadcast.emit('animated', { socketId: socket.id, x: data.x, y: data.y });
+        } catch (e) {
+            console.log(e);
+        }
+
     });
 
     socket.on('newMessage', (data) => {
